@@ -1,4 +1,12 @@
-const chat = document.getElementById("chat");
+const typing = document.getElementById("typing");
+
+function showTyping(ms){
+  typing.classList.remove("hidden");
+  return new Promise(r=>setTimeout(()=>{
+    typing.classList.add("hidden");
+    r();
+  }, ms));
+}const chat = document.getElementById("chat");
 const choices = document.getElementById("choices");
 
 let currentScene = STORY.start;
