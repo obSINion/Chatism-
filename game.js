@@ -47,4 +47,9 @@ function loadScene(sceneId){
   });
 }
 
-loadScene(currentScene);
+loadScene(currentScene);(async () => {
+  for (const m of scene.messages) {
+    if (m.from === "them") await showTyping(600);
+    addMessage(m.text, m.from === "you" ? "you" : "them");
+  }
+})();
