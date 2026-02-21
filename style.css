@@ -1,0 +1,69 @@
+body {
+  margin:0;
+  font-family:-apple-system,system-ui;
+  background:#111;
+  color:white;
+  display:flex;
+  justify-content:center;
+}
+
+.phone {
+  width:400px;
+  max-width:100%;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  background:#000;
+}
+
+.statusbar {
+  padding:10px;
+  text-align:center;
+  background:#111;
+}
+
+.topbar {
+  display:flex;
+  justify-content:space-between;
+  padding:10px;
+  background:#1a1a1a;
+}
+
+.chat {
+  flex:1;
+  overflow:auto;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.msg {
+  padding:10px;
+  border-radius:12px;
+  max-width:70%;
+}
+
+.them {
+  background:#222;
+  align-self:flex-start;
+}
+
+.you {
+  background:#2979ff;
+  align-self:flex-end;
+}
+
+.choices {
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  background:#111;
+}
+
+button {
+  padding:10px;
+  border-radius:10px;
+  border:none;
+}
