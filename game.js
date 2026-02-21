@@ -3,35 +3,40 @@ const choices = document.getElementById("choices");
 
 let currentScene = STORY.start;
 
+function addMessage(text, sender){
+  const div = document.createElement("div");
+  div.className = "msg " + sender;
+  div.textContent = text;
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+}
+
 function loadScene(sceneId){
   currentScene = sceneId;
   const scene = STORY.scenes[sceneId];
-  chat.innerHTML = "";
-  choices.innerHTML = "";
 
   scene.messages.forEach(m=>{
-    const div = document.createElement("div");
-    div.className = "msg " + (m.from === "you" ? "you":"them");
-    div.textContent = m.text;
-    chat.appendChild(div);
+    setTimeout(()=>{
+      addMessage(m.text, m.from === "you" ? "you" : "them");
+    }, 300);
   });
+
+  choices.innerHTML = "";
 
   scene.choices.forEach(c=>{
     const btn = document.createElement("button");
     btn.textContent = c.text;
+
     btn.onclick = ()=>{
-      addPlayerMessage(c.text);
-      loadScene(c.next);
+      addMessage(c.text, "you");
+      choices.innerHTML = "";
+      setTimeout(()=>{
+        loadScene(c.next);
+      }, 500);
     };
+
     choices.appendChild(btn);
   });
-}
-
-function addPlayerMessage(text){
-  const div = document.createElement("div");
-  div.className = "msg you";
-  div.textContent = text;
-  chat.appendChild(div);
 }
 
 loadScene(currentScene);
